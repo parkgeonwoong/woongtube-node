@@ -1,0 +1,26 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "Youtube Coding NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkgeonwoong/Youtube-reloaded.git"
+  },
+  "author": "Woongs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkgeonwoong/Youtube-reloaded/issues"
+  },
+  "homepage": "https://github.com/parkgeonwoong/Youtube-reloaded#readme",
+  "dependencies": {
+    "@babel/core": "^7.15.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.15.0"
+  }
+}
