@@ -10,11 +10,20 @@ const app = express(); // express function을 사용하면 express apllication�
 // request를 listening 하고 있다.
 // 서버가 사람들이 뭔가를 요청할 때까지 기다리게 해야 한다
 
-// MiddleWare
+// 4. MiddleWare
 // middleware <--> handler => Controller
 // next() 함수만 호출하면 middleware가 되버린다.
-const gossipMiddleware = (req, res, next) => {
-  console.log(`Someone is going to ${req.url}`);
+const loggerMiddleware = (req, res, next) => {
+  console.log(`${req.method} ${req.url}`); // 확인작업 : 요청받은 method, url
+  next();
+};
+
+const privateMiddleware = (req, res, next) => {
+  const url = req.url;
+  if (url === "/protected") {
+    return res.send("<h1>Not Allowed </h1>");
+  }
+  console.log("Allowed, you may continue.");
   next();
 };
 
@@ -32,9 +41,18 @@ const handleLogin = (req, res) => {
   return res.send("Login here");
 };
 
+const handledProtected = (req, res) => {
+  return res.send("Welcome to the private lounge.");
+};
+
 // 2. application 설정
-app.get("/", gossipMiddleware, handleHome);
+app.use(loggerMiddleware); // 순서가 중요하다 middleware를 use -> URL의 get이 와야함
+app.use(privateMiddleware);
+
+app.get("/", handleHome);
+// app.get("/", loggerMiddleware, handleHome); 하나만 쓸때
 app.get("/login", handleLogin);
+app.get("/protected", handledProtected);
 
 const handleListening = () =>
   console.log(`Server Listening on port http://localhost:${PORT} 🔥`);
