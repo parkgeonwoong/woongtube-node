@@ -10,7 +10,26 @@ const app = express(); // express function을 사용하면 express apllication�
 // request를 listening 하고 있다.
 // 서버가 사람들이 뭔가를 요청할 때까지 기다리게 해야 한다
 
+// 2-1 argument = request object
+//    argument = response object
+const handleHome = (req, res) => {
+  // console.log(req); // express가 request object를 제공해주는것을 보여줌
+  return res.send("I still NodeJS");
+  // return res.end(); // 서버가 request를 끝내버린 것
+  // 브라우저가 request를 보내면, 우리는 응답을 해야함 => return
+};
+// 즉 home으로 get request가 오면, express는 handleHome에다가 request와 response object를 넣어줌
+
+const handleLogin = (req, res) => {
+  return res.send("Login here");
+};
+
+// 2. application 설정
+app.get("/", handleHome);
+app.get("/login", handleLogin);
+
 const handleListening = () =>
   console.log(`Server Listening on port http://localhost:${PORT} 🔥`);
 
+// 3. 외부 접속 listen
 app.listen(PORT, handleListening); // listen(port, callback)
