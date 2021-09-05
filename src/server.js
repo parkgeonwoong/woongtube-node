@@ -15,7 +15,7 @@ app.use(logger);
 // request를 listening 하고 있다.
 // 서버가 사람들이 뭔가를 요청할 때까지 기다리게 해야 한다
 
-// 5. Router
+// 5. Router = 그룹화 , url의 시작부분
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
