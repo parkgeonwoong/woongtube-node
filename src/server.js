@@ -1,6 +1,9 @@
 import express from "express"; // "express"라는 package를 express라는 이름으로 import
 // const express = require("express");
 import morgan from "morgan";
+import globalRouter from "./routers/globalRouter";
+import videoRouter from "./routers/videoRouter";
+import userRouter from "./routers/userRouter";
 
 const PORT = 4000;
 
@@ -13,24 +16,6 @@ app.use(logger);
 // 서버가 사람들이 뭔가를 요청할 때까지 기다리게 해야 한다
 
 // 5. Router
-const globalRouter = express.Router();
-
-const handleHome = (req, res) => res.send("Home");
-
-globalRouter.get("/", handleHome);
-
-const userRouter = express.Router();
-
-const handleEditUser = (req, res) => res.send("Edit User");
-
-userRouter.get("/edit", handleEditUser);
-
-const videoRouter = express.Router();
-
-const handleWatchVideo = (req, res) => res.send("Watch Video");
-
-videoRouter.get("/watch", handleWatchVideo);
-
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
