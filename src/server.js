@@ -13,6 +13,7 @@ console.log(process.cwd()); // 현재 작업 디렉토리
 const app = express(); // express function을 사용하면 express apllication을 생성해줌
 const logger = morgan("dev");
 app.set("view engine", "pug"); // view engine을 express에게 설정
+app.set("views", process.cwd() + "/src/views"); // 뷰의 현재 작업 디렉토리를 바꾸는 설정
 app.use(logger);
 // 서버는 항상 켜져있는 컴퓨터와 같다. 즉 서버는 듣고 답하는 것
 // request를 listening 하고 있다.
