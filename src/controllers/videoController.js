@@ -1,4 +1,4 @@
-export const trending = (req, res) => res.render("home");
+export const trending = (req, res) => res.render("home", { pageTitle: "Home" });
 
 export const see = (req, res) => {
   // console.log(`Watch video ${req.params.id}`);
