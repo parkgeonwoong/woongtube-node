@@ -59,3 +59,44 @@ console.log(`Server Listening on port http://localhost:${PORT} 🔥`);
 
 // 3. 외부 접속 listen  
 app.listen(PORT, handleListening); // listen(port, callback)
+
+### Template
+
+1. Pug 설치
+2. Pug 설정 NodeJS Server
+
+```javascript
+app.set("view engine", "pug"); // view engine을 express에게 설정
+app.set("views", process.cwd() + "/src/views"); // 뷰의 현재 작업 디렉토리를 바꾸는 설정
+```
+
+#### Partial
+
+부분화 작업으로 중복화 가능
+
+```javascript
+include 폴더/이름
+```
+
+#### Iteration
+
+```pug
+each item in 배열이름
+
+// Controller에서 배열을 만든다.
+```
+
+- res.render(파일이름, 오브젝트화 변수)
+
+#### Mixin
+
+- HTML에서 JS 함수처럼 쓰임
+
+```pug
+mixin video(info)
+    li #{info.-- }
+....
+
+each item in videos
+        +video(item)
+```
