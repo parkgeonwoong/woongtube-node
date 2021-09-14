@@ -7,7 +7,7 @@ import userRouter from "./routers/userRouter";
 
 const PORT = 4000;
 
-console.log(process.cwd()); // 현재 작업 디렉토리
+// console.log(process.cwd()); // 현재 작업 디렉토리
 
 // 1. express application 만들어야 함
 const app = express(); // express function을 사용하면 express apllication을 생성해줌
