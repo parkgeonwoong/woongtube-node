@@ -4,6 +4,8 @@ import {
   upload,
   getEdit,
   postEdit,
+  getUpload,
+  postUpload,
 } from "../controllers/videoController";
 
 const videoRouter = express.Router();
@@ -13,5 +15,6 @@ videoRouter.get("/:id(\\d+)", watch); // express routing => 정규식
 videoRouter.route("/:id(\\d+)/edit").get(getEdit).post(postEdit);
 // videoRouter.get("/:id(\\d+)/edit", getEdit); 위와 일치
 // videoRouter.post("/:id(\\d+)/edit", postEdit);
+videoRouter.route("/upload").get(getUpload).post(postUpload);
 
 export default videoRouter;
