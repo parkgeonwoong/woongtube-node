@@ -1,3 +1,4 @@
+import "./db";
 import express from "express"; // "express"라는 package를 express라는 이름으로 import
 // const express = require("express");
 import morgan from "morgan";
