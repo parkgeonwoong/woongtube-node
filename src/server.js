@@ -1,13 +1,11 @@
-import "./db";
-import Video from "./models/Video";
+// server.js => express & server의 configuration에 관련된 코드만!!
+
 import express from "express"; // "express"라는 package를 express라는 이름으로 import
 // const express = require("express");
 import morgan from "morgan";
 import globalRouter from "./routers/globalRouter";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
-
-const PORT = 4000;
 
 // console.log(process.cwd()); // 현재 작업 디렉토리
 
@@ -28,33 +26,4 @@ app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
 
-/*
-4. MiddleWare
-middleware <--> handler => Controller
-next() 함수만 호출하면 middleware가 되버린다.
-const loggerMiddleware = (req, res, next) => {
-  console.log(`${req.method} ${req.url}`); // 확인작업 : 요청받은 method, url
-  next();
-};
-*/
-
-/*
-2-1 argument = request object
-   argument = response object
-const handleHome = (req, res) => {
-  console.log(req); // express가 request object를 제공해주는것을 보여줌
-  return res.send("<h1>I still NodeJS </h1>");
-  return res.end(); // 서버가 request를 끝내버린 것
-  브라우저가 request를 보내면, 우리는 응답을 해야함 => return
-};
-즉 home으로 get request가 오면, express는 handleHome에다가 request와 response object를 넣어줌
-
-2. application 설정
-app.get("/", handleHome);
-*/
-
-const handleListening = () =>
-  console.log(`Server Listening on port http://localhost:${PORT} 🔥`);
-
-// 3. 외부 접속 listen
-app.listen(PORT, handleListening); // listen(port, callback)
+export default app;
