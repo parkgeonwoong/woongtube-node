@@ -12,11 +12,12 @@ export const home = async (req, res) => {
   return res.render("home", { pageTitle: "Home", videos });
 };
 
-export const watch = (req, res) => {
+export const watch = async (req, res) => {
   // console.log(`Watch video ${req.params.id}`);
   // 수정할 비디오 찾기
   const { id } = req.params;
-  return res.render("watch", { pageTitle: `Watching` });
+  const video = await Video.findById(id);
+  return res.render("watch", { pageTitle: video.title, video });
 };
 
 export const getEdit = (req, res) => {
@@ -26,7 +27,7 @@ export const getEdit = (req, res) => {
 export const postEdit = (req, res) => {
   const { id } = req.params; // 이 post request는 id를 params로 가지고 있다. (videoRouter.js)
   const { title } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   return res.redirect(`/videos/${id}`);
 };
 
