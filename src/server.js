@@ -3,7 +3,7 @@
 import express from "express"; // "express"라는 package를 express라는 이름으로 import
 // const express = require("express");
 import morgan from "morgan";
-import globalRouter from "./routers/globalRouter";
+import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
 
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true })); // express application가 form�
 
 // 5. Router = 그룹화 , url의 시작부분
 // routes를 사용하기 전에 이 middleware를 사용해야 함
-app.use("/", globalRouter);
+app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
 
