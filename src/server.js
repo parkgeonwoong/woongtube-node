@@ -1,13 +1,12 @@
 // server.js => express & server의 configuration에 관련된 코드만!!
-
 import express from "express"; // "express"라는 package를 express라는 이름으로 import
 import morgan from "morgan";
 import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
+import session from "express-session";
 
 // console.log(process.cwd()); // 현재 작업 디렉토리
-
 const app = express();
 const logger = morgan("dev");
 app.set("view engine", "pug"); // view engine을 express에게 설정
@@ -17,6 +16,14 @@ app.use(express.urlencoded({ extended: true })); // express application가 form�
 // 서버는 항상 켜져있는 컴퓨터와 같다. 즉 서버는 듣고 답하는 것
 // request를 listening 하고 있다.
 // 서버가 사람들이 뭔가를 요청할 때까지 기다리게 해야 한다
+
+app.use(
+  session({
+    secret: "Hello!",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 app.use("/", rootRouter);
 app.use("/users", userRouter);
