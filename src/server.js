@@ -1,10 +1,11 @@
 // server.js => express & server의 configuration에 관련된 코드만!!
 import express from "express"; // "express"라는 package를 express라는 이름으로 import
 import morgan from "morgan";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
-import session from "express-session";
 import { localsMiddleware } from "./middlewares";
 
 // console.log(process.cwd()); // 현재 작업 디렉토리
@@ -24,6 +25,7 @@ app.use(
     secret: "Hello!",
     resave: true,
     saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: "mongodb://127.0.0.1:27017/wetube" }),
   })
 );
 
