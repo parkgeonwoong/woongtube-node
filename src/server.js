@@ -5,6 +5,7 @@ import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
 import userRouter from "./routers/userRouter";
 import session from "express-session";
+import { localsMiddleware } from "./middlewares";
 
 // console.log(process.cwd()); // 현재 작업 디렉토리
 const app = express();
@@ -17,7 +18,7 @@ app.use(express.urlencoded({ extended: true })); // express application가 form�
 // request를 listening 하고 있다.
 // 서버가 사람들이 뭔가를 요청할 때까지 기다리게 해야 한다
 
-// Session
+// Session middleware
 app.use(
   session({
     secret: "Hello!",
@@ -26,19 +27,8 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  req.sessionStore.all((error, sessions) => {
-    console.log(sessions);
-    next();
-  });
-});
-
-app.get("/add-one", (req, res, next) => {
-  req.session.apple += 1;
-  return res.send(`${req.session.id}`);
-});
-
 // Router
+app.use(localsMiddleware);
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
