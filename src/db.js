@@ -1,7 +1,7 @@
 // mongo dataBase 연결
 import mongoose from "mongoose";
 
-mongoose.connect("mongodb://127.0.0.1:27017/wetube", {
+mongoose.connect(process.env.DB_URL, {
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
 }); // 새로운 mongodb만드는 것은 / 뒤에 database이름을 적는다.

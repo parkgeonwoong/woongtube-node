@@ -1,3 +1,4 @@
+import "dotenv/config";
 import "./db";
 import "./models/Video"; // 모델 compile
 import "./models/User";
