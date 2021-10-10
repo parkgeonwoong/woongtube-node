@@ -16,3 +16,44 @@
 /videos/:id/edit -> Edit Video 동영상 편집  
 /videos/:id/delete -> Delete Video 동영상 삭제  
 /videos/upload -> Upload video 동영상 업로드
+
+```shell
+node_modules
+package.json
+
+src
+│  db.js
+│  init.js
+│  middlewares.js
+│  server.js
+│
+├─controllers
+│      userController.js
+│      videoController.js
+│
+├─models
+│      User.js
+│      Video.js
+│
+├─routers
+│      rootRouter.js
+│      userRouter.js
+│      videoRouter.js
+│
+└─views
+    │  404.pug
+    │  base.pug
+    │  edit.pug
+    │  home.pug
+    │  join.pug
+    │  login.pug
+    │  search.pug
+    │  upload.pug
+    │  watch.pug
+    │
+    ├─mixins
+    │      video.pug
+    │
+    └─partials
+            footer.pug
+```
