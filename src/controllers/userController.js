@@ -61,6 +61,7 @@ export const postLogin = async (req, res) => {
   req.session.user = user;
   return res.redirect("/");
 };
+
 // Github socialLogin url 예쁘게 하기
 export const startGithubLogin = (req, res) => {
   const baseUrl = "https://github.com/login/oauth/authorize";
@@ -138,18 +139,33 @@ export const finishGithubLogin = async (req, res) => {
     return res.redirect("/login");
   }
 };
+
 // 로그아웃
 export const logout = (req, res) => {
   req.session.destroy();
   return res.redirect("/");
 };
 
+// 프로필 편집
 export const getEdit = (req, res) => {
   return res.render("edit-profile", {
     pageTitle: "Edit Profile",
   });
 };
-export const postEdit = (req, res) => {
+export const postEdit = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: { name, email, username, location }, // form에서 오는 것
+  } = req;
+
+  await User.findByIdAndUpdate(_id, {
+    name: name,
+    email: email,
+    username: username,
+    location: location,
+  });
   return res.render("edit-profile");
 };
 export const see = (req, res) => res.send("See User");
