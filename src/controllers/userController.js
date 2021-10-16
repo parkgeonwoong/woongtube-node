@@ -182,4 +182,18 @@ export const postEdit = async (req, res) => {
   req.session.user = updatedUser;
   return res.redirect("/users/edit");
 };
+
+// 비밀번호 수정
+export const getChangePassword = (req, res) => {
+  // 깃허브 로그인 했을시 수정 못하게 하는 방법
+  if (req.session.user.socialOnly === true) {
+    return res.redirect("/");
+  }
+  return res.render("users/change-password", { pageTitle: "Change Password" });
+};
+
+export const postChangePassword = (req, res) => {
+  return res.redirect("/");
+};
+
 export const see = (req, res) => res.send("See User");
