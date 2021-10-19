@@ -158,7 +158,9 @@ export const postEdit = async (req, res) => {
       user: { _id },
     },
     body: { name, email, username, location }, // form에서 오는 것
+    file,
   } = req;
+  console.log(file);
   // 이메일, 유저이름 유효성 검사
   const exists = await User.exists({
     $and: [{ _id: { $ne: _id } }, { $or: [{ username }, { email }] }],
