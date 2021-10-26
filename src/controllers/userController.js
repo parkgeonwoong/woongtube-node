@@ -155,12 +155,11 @@ export const getEdit = (req, res) => {
 export const postEdit = async (req, res) => {
   const {
     session: {
-      user: { _id },
+      user: { _id, avatarUrl },
     },
     body: { name, email, username, location }, // form에서 오는 것
-    file,
+    file, // Avatar 이미지 추가
   } = req;
-  console.log(file);
   // 이메일, 유저이름 유효성 검사
   const exists = await User.exists({
     $and: [{ _id: { $ne: _id } }, { $or: [{ username }, { email }] }],
@@ -174,6 +173,7 @@ export const postEdit = async (req, res) => {
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
+      avatarUrl: file ? file.path : avatarUrl,
       name: name,
       email: email,
       username: username,
