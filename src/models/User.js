@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String },
   name: { type: String, required: true },
   location: String,
+  videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
 });
 
 // 비밀번호 저장 bcrypt
