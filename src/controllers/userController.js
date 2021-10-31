@@ -1,4 +1,5 @@
 import User from "../models/User";
+import Video from "../models/Video";
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
 
@@ -193,7 +194,6 @@ export const getChangePassword = (req, res) => {
   }
   return res.render("users/change-password", { pageTitle: "Change Password" });
 };
-
 export const postChangePassword = async (req, res) => {
   // session에서 현재 로그인된 사용자를 확인하고, form에서 정보를 가져옴
   const {
@@ -226,14 +226,18 @@ export const postChangePassword = async (req, res) => {
   return res.redirect("/users/logout");
 };
 
+// 프로필 보기
 export const see = async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found" });
   }
+  const videos = await Video.find({ owner: user._id });
+  console.log(videos);
   return res.render("users/profile", {
     pageTitle: user.name,
     user: user,
+    videos,
   });
 };

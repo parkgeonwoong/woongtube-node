@@ -1,30 +1,24 @@
 import Video from "../models/Video";
 import User from "../models/User";
 
-/* CallBack
-Video.find({}, (error, videos) => {
-  console.log("error", error);
-  console.log("videos", videos);
-});
-*/
-
+// 메인 홈
 export const home = async (req, res) => {
   const videos = await Video.find({}).sort({ createdAt: "desc" });
   return res.render("home", { pageTitle: "Home", videos });
 };
 
+// 동영상 보기
 export const watch = async (req, res) => {
   // console.log(`Watch video ${req.params.id}`);
-  // 수정할 비디오 찾기
   const { id } = req.params;
-  const video = await Video.findById(id);
-  const owner = await User.findById(video.owner);
+  const video = await Video.findById(id).populate("owner");
   if (!video) {
     return res.status(404).render("404", { pageTitle: "Video not found." });
   }
-  return res.render("watch", { pageTitle: video.title, video, owner });
+  return res.render("watch", { pageTitle: video.title, video });
 };
 
+// 동영상 편집
 export const getEdit = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id);
@@ -48,6 +42,7 @@ export const postEdit = async (req, res) => {
   return res.redirect(`/videos/${id}`);
 };
 
+// 동영상 업로드
 export const getUpload = (req, res) => {
   return res.render("upload", { pageTitle: "Upload Video" });
 };
@@ -75,12 +70,14 @@ export const postUpload = async (req, res) => {
   }
 };
 
+// 동영상 삭제
 export const deleteVideo = async (req, res) => {
   const { id } = req.params;
   await Video.findByIdAndDelete(id);
   return res.redirect("/");
 };
 
+// 동영상 찾기
 export const search = async (req, res) => {
   const { keyword } = req.query;
   let videos = [];
