@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
+// 스키마
 const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   avatarUrl: String,
@@ -14,8 +15,11 @@ const userSchema = new mongoose.Schema({
 
 // 비밀번호 저장 bcrypt
 userSchema.pre("save", async function () {
-  this.password = await bcrypt.hash(this.password, 5);
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 5);
+  }
 });
 
+// 모델
 const User = mongoose.model("User", userSchema);
 export default User;
