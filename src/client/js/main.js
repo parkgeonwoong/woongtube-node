@@ -1,1 +1,3 @@
-alert("Hi WebPack");
+import "../scss/styles.scss";
+
+console.log("Hi Node");
