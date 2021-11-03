@@ -34,7 +34,8 @@ app.use(
 
 // Router
 app.use(localsMiddleware);
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads")); // 서버가 폴더 볼수 있게 요청 static(폴더)
+app.use("/static", express.static("assets"));
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
