@@ -20,12 +20,35 @@
 ```shell
 node_modules
 package.json
-
+webpack.config.js
+nodemon.json
+babel.config.json
 src
 │  db.js
 │  init.js
 │  middlewares.js
 │  server.js
+│
+├─client
+│  ├─js
+│  │      main.js
+│  │
+│  └─scss
+│      │  styles.scss
+│      │
+│      ├─components
+│      │      footer.scss
+│      │      header.scss
+│      │      shared.scss
+│      │      video.scss
+│      │
+│      ├─config
+│      │      _reset.scss
+│      │      _variables.scss
+│      │
+│      └─screens
+│              home.scss
+│              search.scss
 │
 ├─controllers
 │      userController.js
@@ -43,6 +66,7 @@ src
 └─views
     │  404.pug
     │  base.pug
+    │  edit-profile.pug
     │  edit.pug
     │  home.pug
     │  join.pug
@@ -54,6 +78,11 @@ src
     ├─mixins
     │      video.pug
     │
-    └─partials
-            footer.pug
+    ├─partials
+    │      footer.pug
+    │      header.pug
+    │
+    └─users
+            change-password.pug
+            profile.pug
 ```
