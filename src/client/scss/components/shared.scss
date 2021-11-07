@@ -9,10 +9,16 @@
 }
 
 .auth-switch {
-  text-align: center;
   margin-top: 40px;
+  text-align: center;
   a {
     color: #3b82f6;
     text-decoration: underline;
   }
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }

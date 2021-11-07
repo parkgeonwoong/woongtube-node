@@ -1,0 +1,33 @@
+.watch {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  .watch__video {
+    margin: 15px 0;
+    p {
+      padding: 10px 0;
+      font-size: 18px;
+    }
+    small {
+      font-size: 12px;
+    }
+  }
+
+  .watch__user {
+    margin: 15px 0;
+    a {
+      color: #3b82f6;
+      font-weight: 600;
+    }
+  }
+
+  .watch__update {
+    display: flex;
+    flex-direction: column;
+    a {
+      padding: 5px 0;
+      color: #3b82f6;
+      font-weight: 600;
+    }
+  }
+}
