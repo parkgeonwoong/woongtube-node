@@ -2,12 +2,13 @@ doctype html
 html(lang="ko")
     head 
         title #{pageTitle} | #{siteName}
+        link(rel="shortcut icon", href="https://www.youtube.com/s/desktop/73bdaeaa/img/favicon.ico" type="image/x-icon")
         link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css")
         link(rel="stylesheet", href="/static/css/styles.css")
     body 
         include partials/header
         main
             block content
-    hr.footer__line
+    
     include partials/footer.pug
     script(src="/static/js/main.js")
