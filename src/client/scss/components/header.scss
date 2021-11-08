@@ -9,13 +9,14 @@ header {
     color: $red;
     font-size: 38px;
   }
+
   span {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     padding: 0 5px;
     color: white;
     letter-spacing: -3px;
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 600;
     animation: fadein 2s ease-in-out;
   }
@@ -45,6 +46,11 @@ header {
     color: $bg;
     padding: 5px 10px;
     border-radius: 5px;
+  }
+  .header__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
 }
 

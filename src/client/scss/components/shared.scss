@@ -2,12 +2,13 @@
   margin-bottom: 50px;
   font-size: 18px;
 }
+// home, search, profile.pug
 .video-grid {
   display: grid;
   gap: 50px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-
+// login, join.pug
 .auth-switch {
   margin-top: 40px;
   text-align: center;
