@@ -46,14 +46,18 @@ const handleVolumeChange = (event) => {
   }
 };
 
+// 원하는 포맷을 가진 date를 생성
+const formatTime = (seconds) =>
+  new Date(seconds * 1000).toISOString().substr(14, 5);
+
 // 비디오 시간 마지막 부분
 const handleLoadedMetadata = () => {
-  totalTime.innerText = Math.floor(video.duration);
+  totalTime.innerText = formatTime(Math.floor(video.duration));
 };
 
 // 비디오 시간 처음 부분
 const handleTimeUpdate = () => {
-  currenTime.innerText = Math.floor(video.currentTime);
+  currenTime.innerText = formatTime(Math.floor(video.currentTime));
 };
 
 playBtn.addEventListener("click", handlePlayClick);
