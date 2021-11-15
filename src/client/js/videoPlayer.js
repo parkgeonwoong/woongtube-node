@@ -147,6 +147,14 @@ const handleKeydown = (event) => {
       break;
   }
 };
+console.log(videoContainer.dataset);
+// 비디오 끝나고 조회수+1 : API를 받아오자
+const handleEnded = () => {
+  const { id } = videoContainer.dataset;
+  fetch(`/api/videos/${id}/views`, {
+    method: "POST",
+  });
+};
 
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
@@ -159,6 +167,7 @@ videoContainer.addEventListener("mousemove", handleMouseMove);
 videoContainer.addEventListener("mouseleave", handleMouseLeave);
 video.addEventListener("click", handleVideoClick);
 window.addEventListener("keydown", handleKeydown);
+video.addEventListener("ended", handleEnded);
 
 // 미디어 준비상태: 예외처리
 if (video.readyState == 4) {
