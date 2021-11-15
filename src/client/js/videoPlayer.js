@@ -147,11 +147,11 @@ const handleKeydown = (event) => {
       break;
   }
 };
-console.log(videoContainer.dataset);
+
 // 비디오 끝나고 조회수+1 : API를 받아오자
 const handleEnded = () => {
   const { id } = videoContainer.dataset;
-  fetch(`/api/videos/${id}/views`, {
+  fetch(`/api/videos/${id}/view`, {
     method: "POST",
   });
 };
