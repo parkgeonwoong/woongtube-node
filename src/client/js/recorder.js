@@ -1,3 +1,5 @@
+import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+
 const startBtn = document.getElementById("startBtn");
 const video = document.getElementById("preview");
 
@@ -6,7 +8,18 @@ let recorder;
 let videoFile;
 
 // 동영상 다운로드
-const handleDownload = () => {
+const handleDownload = async () => {
+  const ffmpeg = createFFmpeg({
+    log: true,
+    corePath: "/static/ffmpeg-core.js",
+  }); // 콘솔에서 확인
+  await ffmpeg.load(); // await 하는 이유 사용자가 소프트웨어를 사용할 것이기 때문
+
+  // ffmpeg 파일을 만들자
+  ffmpeg.FS("writeFile", "recording.webm", await fetchFile(videoFile)); // 가상 컴퓨터에 파일 생성
+
+  await ffmpeg.run("-i", "recording.webm", "-r", "60", "output.mp4");
+
   const a = document.createElement("a");
   a.href = videoFile;
   a.download = "MyRecording.webm";

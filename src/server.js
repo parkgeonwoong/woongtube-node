@@ -20,6 +20,13 @@ app.use(express.urlencoded({ extended: true })); // express application가 form�
 // request를 listening 하고 있다.
 // 서버가 사람들이 뭔가를 요청할 때까지 기다리게 해야 한다
 
+// webm -> mp4 보안 에러
+app.use((req, res, next) => {
+  res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.header("Cross-Origin-Opener-Policy", "same-origin");
+  next();
+});
+
 // Session middleware
 app.use(
   session({
@@ -36,7 +43,11 @@ app.use(
 // Router
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads")); // 서버가 폴더 볼수 있게 요청 static(폴더)
-app.use("/static", express.static("assets"));
+app.use(
+  "/static",
+  express.static("assets"),
+  express.static("node_modules/@ffmpeg/core/dist")
+);
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
