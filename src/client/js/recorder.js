@@ -21,6 +21,14 @@ const downloadFile = (fileUrl, fileName) => {
   a.click();
 };
 
+// 동영상 멈춤
+// const handleStop = () => {
+//   actionBtn.innerText = "Download Recording";
+//   actionBtn.removeEventListener("click", handleStop);
+//   actionBtn.addEventListener("click", handleDownload);
+//   recorder.stop();
+// };
+
 // 동영상 다운로드 & 동영상 타입 변환 & 썸네일 jpg
 const handleDownload = async () => {
   actionBtn.removeEventListener("click", handleDownload);
@@ -73,20 +81,11 @@ const handleDownload = async () => {
   actionBtn.addEventListener("click", handleStart);
 };
 
-// 동영상 멈춤 버튼
-const handleStop = () => {
-  actionBtn.innerText = "Download Recording";
-  actionBtn.removeEventListener("click", handleStop);
-  actionBtn.addEventListener("click", handleDownload);
-
-  recorder.stop();
-};
-
 // 동영상 시작 버튼
 const handleStart = () => {
-  actionBtn.innerText = "Stop Recording";
+  actionBtn.innerText = "Recording";
+  actionBtn.disabled = true;
   actionBtn.removeEventListener("click", handleStart);
-  actionBtn.addEventListener("click", handleStop);
 
   // 기록하는 개체 stop 이후 생성
   recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
@@ -99,15 +98,24 @@ const handleStart = () => {
     video.src = videoFile;
     video.loop = true;
     video.play();
+    actionBtn.innerText = "Download";
+    actionBtn.disabled = false;
+    actionBtn.addEventListener("click", handleDownload);
   };
   recorder.start();
+  setTimeout(() => {
+    recorder.stop();
+  }, 5000);
 };
 
 // 미리보기 동영상 녹화
 const init = async () => {
   stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: true,
+    video: {
+      width: 1024,
+      height: 576,
+    },
   });
   video.srcObject = stream;
   video.play();
