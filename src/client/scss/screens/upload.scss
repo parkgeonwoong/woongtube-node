@@ -9,5 +9,44 @@
       max-width: 100%;
       margin-bottom: 10px;
     }
+    .upload__btn {
+      margin: 15px 0;
+      padding: 12px 20px;
+      border-radius: 5px;
+      border: 0;
+      outline: 0;
+      background: #1aab8a;
+      color: #fff;
+      font-size: 16px;
+      position: relative;
+      cursor: pointer;
+      transition: 800ms ease all;
+      &:hover {
+        background: $bg;
+        color: #1aab8a;
+      }
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 2px;
+        width: 0;
+        background: #1aab8a;
+        transition: 400ms ease all;
+      }
+      &::after {
+        right: inherit;
+        top: inherit;
+        left: 0;
+        bottom: 0;
+      }
+      &:hover::before,
+      &:hover::after {
+        width: 100%;
+        transition: 800ms ease all;
+      }
+    }
   }
 }

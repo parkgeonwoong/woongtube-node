@@ -2,6 +2,7 @@
 import express from "express"; // "express"라는 package를 express라는 이름으로 import
 import morgan from "morgan";
 import session from "express-session";
+import flash from "express-flash";
 import MongoStore from "connect-mongo";
 import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
@@ -41,6 +42,7 @@ app.use(
 );
 
 // Router
+app.user(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads")); // 서버가 폴더 볼수 있게 요청 static(폴더)
 app.use(
