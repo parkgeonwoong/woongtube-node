@@ -55,6 +55,7 @@ export const postEdit = async (req, res) => {
     description,
     hashtags: Video.formatHashtags(hashtags),
   });
+  req.flash("success", "Changes saved");
   return res.redirect(`/videos/${id}`);
 };
 
@@ -82,6 +83,7 @@ export const postUpload = async (req, res) => {
     user.videos.push(newVideo._id);
     user.save();
 
+    req.flash("info", "Upload Video");
     return res.redirect("/");
   } catch (error) {
     return res.status(400).render("upload", {
@@ -109,6 +111,7 @@ export const deleteVideo = async (req, res) => {
   await Video.findByIdAndDelete(id);
   user.videos.splice(user.videos.indexOf(id), 1);
   user.save();
+  req.flash("info", "Delete Video");
   return res.redirect("/");
 };
 

@@ -42,7 +42,7 @@ app.use(
 );
 
 // Router
-app.user(flash());
+app.use(flash());
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads")); // 서버가 폴더 볼수 있게 요청 static(폴더)
 app.use(

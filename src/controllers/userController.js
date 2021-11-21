@@ -143,7 +143,10 @@ export const finishGithubLogin = async (req, res) => {
 
 // 로그아웃
 export const logout = (req, res) => {
-  req.session.destroy();
+  req.session.user = null;
+  res.locals.loggedInUser = req.session.user;
+  req.session.loggedIn = false;
+  // req.session.destroy();
   req.flash("info", "Bye Bye");
   return res.redirect("/");
 };
@@ -184,6 +187,7 @@ export const postEdit = async (req, res) => {
     { new: true }
   );
   req.session.user = updatedUser;
+  req.flash("info", "Change Profile");
   return res.redirect("/users/edit");
 };
 
@@ -226,7 +230,8 @@ export const postChangePassword = async (req, res) => {
   user.password = newPassword;
   await user.save();
   req.flash("info", "Password updated");
-  return res.redirect("/users/logout");
+  return res.redirect("/");
+  // return res.redirect("/users/logout");
 };
 
 // 프로필 보기
