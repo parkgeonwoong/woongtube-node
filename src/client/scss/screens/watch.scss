@@ -1,23 +1,51 @@
 .watch {
-  margin: 50px;
   display: flex;
   flex-direction: column;
   .watch__video {
+    display: flex;
+    flex-direction: column;
     margin: 15px 0;
-    p {
-      padding: 10px 0;
-      font-size: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    .watch__title {
+      font-size: 26px;
+      margin-bottom: 15px;
+      font-weight: bold;
     }
-    small {
-      font-size: 12px;
+    .watch__date {
+      display: flex;
+      small {
+        padding-right: 5px;
+        font-size: 12px;
+        margin-bottom: 10px;
+        opacity: 0.6;
+      }
+    }
+    .watch__description {
+      margin-bottom: 10px;
+      padding: 10px 0;
+      font-size: 16px;
     }
   }
 
   .watch__user {
-    margin: 15px 0;
-    a {
-      color: #3b82f6;
-      font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    min-width: 100px;
+    .watch__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .watch__owner {
+      margin-bottom: 5px;
+      font-size: 14px;
+      a {
+        color: #3b82f6;
+        font-weight: 600;
+      }
     }
   }
 
@@ -25,6 +53,7 @@
     display: flex;
     flex-direction: column;
     a {
+      font-size: 14px;
       padding: 5px 0;
       color: #3b82f6;
       font-weight: 600;

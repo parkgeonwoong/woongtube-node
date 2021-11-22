@@ -25,18 +25,24 @@ block content
                         span#fullScreen 
                             i.fas.fa-expand
 
-block scripts
-    script(src="/static/js/videoPlayer.js")
-
-    
     div.watch
         div.watch__video 
-            p=video.description
-            small=video.createdAt
+            p.watch__title=video.title
+            div.watch__date
+                small 조회수 #{video.meta.views} 회 ▫️
+                small=new Date(video.createdAt).toLocaleDateString("ko-kr", {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})
+            p.watch__description=video.description
+        
         div.watch__user
-            small Uploaded by 
-            a(href=`/users/${video.owner._id}`) #{video.owner.name}
+            a(href=`/users/${video.owner._id}`)
+                img.watch__avatar(src="/" + video.owner.avatarUrl)
+            small.watch__owner Uploaded by 
+                a(href=`/users/${video.owner._id}`) #{video.owner.name}
         div.watch__update
             if String(video.owner._id) === String(loggedInUser._id) 
                 a(href=`${video.id}/edit`) Edit Video &rarr;
                 a(href=`${video.id}/delete`) Delete Video &rarr;
+block scripts
+    script(src="/static/js/videoPlayer.js")
+
+    
