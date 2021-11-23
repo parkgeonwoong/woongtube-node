@@ -44,12 +44,20 @@ block content
                 a(href=`${video.id}/delete`) Delete Video &rarr;
 
         if loggedIn
-            div.video__comments
+            div.video__add-comments
                 form.video__comment-form#commentForm 
                     textarea(cols='30', rows='10', placeholder="Write a nice comment..")
-                    button Add Comment
+                    button &rarr; Add Comment
 
-
+        div.video__comments
+            h2(style=`font-weight:bold;`) Comments
+            ul 
+                each comment in video.comments.reverse()
+                    li.video__comment(data-id=comment._id)
+                        img(src=comment.owner.avatarUrl)
+                        span #{comment.text}
+                    //- i.fas.fa-comment
+                    //- | #{comment.text}
 
 block scripts
     script(src="/static/js/videoPlayer.js")
