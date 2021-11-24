@@ -152,17 +152,23 @@ export const createComment = async (req, res) => {
   } = req;
 
   const video = await Video.findById(id);
+  const userId = await User.findById(user._id).populate("comments");
+
   if (!video) {
     return res.sendStatus(404);
   }
   const comment = await Comment.create({
     text,
+    name: user.name,
     owner: user._id,
     video: id,
   });
 
   video.comments.push(comment._id);
   video.save();
+
+  userId.comments.push(comment._id);
+  userId.save();
   // console.log(req.params);
   // console.log(req.body.text);
   // console.log(req.session.user);

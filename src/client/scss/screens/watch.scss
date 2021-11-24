@@ -120,5 +120,9 @@
     padding: 10px;
     // border-radius: 9999;
     margin-bottom: 10px;
+    display: flex;
+    .video__comment__owner {
+      margin-right: 15px;
+    }
   }
 }
