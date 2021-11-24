@@ -1,7 +1,6 @@
 import Video from "../models/Video";
 import Comment from "../models/Comment";
 import User from "../models/User";
-import { async } from "regenerator-runtime";
 
 // 메인 홈
 export const home = async (req, res) => {
@@ -167,5 +166,5 @@ export const createComment = async (req, res) => {
   // console.log(req.params);
   // console.log(req.body.text);
   // console.log(req.session.user);
-  return res.sendStatus(201);
+  return res.status(201).json({ newCommentId: comment._id });
 };

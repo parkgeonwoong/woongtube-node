@@ -1,6 +1,22 @@
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
 
+// 코맨트 생성 함수
+const addComment = (text, id) => {
+  const videoComments = document.querySelector(".video__comments ul");
+  const newComment = document.createElement("li");
+  newComment.className = "video__comment";
+  newComment.dataset.id = id;
+  // const icon = document.createElement("i");
+  // icon.className = "fas fa-comment";
+  const span = document.createElement("span");
+  span.innerText = ` ${text}`;
+
+  // newComment.appendChild(icon);
+  newComment.appendChild(span);
+  videoComments.prepend(newComment);
+};
+
 // 코멘트 제출시 함수
 const handleSubmit = async (event) => {
   event.preventDefault();
@@ -10,7 +26,7 @@ const handleSubmit = async (event) => {
   if (text === "") {
     return;
   }
-  await fetch(`/api/videos/${videoId}/comment`, {
+  const response = await fetch(`/api/videos/${videoId}/comment`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,8 +34,13 @@ const handleSubmit = async (event) => {
     body: JSON.stringify({ text }),
   });
   textarea.value = "";
-  window.location.reload();
+  // console.log(response);
+  const json
+  if (response.status === 201) {
+    addComment(text);
+  }
 };
+
 if (form) {
   form.addEventListener("submit", handleSubmit);
 }
