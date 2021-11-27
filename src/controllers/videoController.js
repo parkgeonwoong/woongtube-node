@@ -172,5 +172,25 @@ export const createComment = async (req, res) => {
   // console.log(req.params);
   // console.log(req.body.text);
   // console.log(req.session.user);
-  return res.status(201).json({ newCommentId: comment._id });
+  return res.status(201).json({ newCommentId: comment._id }); // fronted한테 새로 생긴 댓글의 id를 보내기 위해
+};
+
+// 코멘트 삭제 fetch api
+export const deleteComment = async (req, res) => {
+  const {
+    params: { id },
+    session: { user },
+  } = req;
+  try {
+    const comment = await Comment.findById(id);
+    if (user._id === String(comment.owner)) {
+      await Comment.findByIdAndDelete(id);
+      const video = await Video.findById(comment.video);
+      video.comments.remove(comment._id);
+      video.save();
+    }
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.sendStatus(404);
+  }
 };

@@ -53,13 +53,13 @@ block content
             h2(style=`font-weight:bold;`) Comments
             ul 
                 each comment in video.comments.reverse()
-                    li.video__comment(data-id=comment.id)
-                        span.video__comment__owner #{comment.name} :
+                    li.video__comment(data-id=comment._id)
+                        span.video__comment__owner 👉 #{comment.name} :
                         //- img(src=comment.owner.avatarUrl)
                         span.video__comment__text #{comment.text}
 
-                        //- if String(video.owner._id) === String(comment.owner._id)
-                        //-     span.video__comment__delete ❌
+                        if String(loggedInUser._id) === String(comment.owner._id)
+                            i.far.fa-trash-alt.fa-lg.video__comment__delete
                     //- i.fas.fa-comment
                     //- | #{comment.text}
 

@@ -1,5 +1,11 @@
 const videoContainer = document.getElementById("videoContainer");
 const form = document.getElementById("commentForm");
+const deleteBtn = document.querySelectorAll(".video__comment__delete");
+
+const deleteComment = (li) => {
+  const commentList = document.querySelector(".video__comments ul");
+  commentList.removeChild(li);
+};
 
 // 코맨트 생성 함수
 const addComment = (text, id) => {
@@ -7,13 +13,17 @@ const addComment = (text, id) => {
   const newComment = document.createElement("li");
   newComment.dataset.id = id;
   newComment.className = "video__comment";
-  // const icon = document.createElement("i");
-  // icon.className = "fas fa-comment";
-  const span = document.createElement("span");
-  span.innerText = ` ${text}`;
+  const i = document.createElement("i");
+  i.addEventListener("click", handleDelete);
+  i.className = "far fa-trash-alt fa-lg video__comment__delete";
+  // const span = document.createElement("span");
+  // span.innerText = ` ${id.name}`;
+  const span2 = document.createElement("span");
+  span2.innerText = ` ${text}`;
 
-  // newComment.appendChild(icon);
-  newComment.appendChild(span);
+  // newComment.appendChild(span);
+  newComment.appendChild(span2);
+  newComment.appendChild(i);
   videoComments.prepend(newComment);
 };
 
@@ -45,4 +55,24 @@ const handleSubmit = async (event) => {
 
 if (form) {
   form.addEventListener("submit", handleSubmit);
+}
+
+// 코멘트 삭제
+const handleDelete = async (event) => {
+  const li = event.target.parentNode;
+  const commentid = li.dataset.id;
+  const response = await fetch(`/api/videos/comments/${commentid}/delete`, {
+    method: "DELETE",
+  });
+
+  if (response.status === 200) {
+    deleteComment(li);
+    // location.reload();
+  }
+};
+
+if (deleteBtn) {
+  deleteBtn.forEach(function (currentBtn) {
+    currentBtn.addEventListener("click", handleDelete);
+  });
 }
