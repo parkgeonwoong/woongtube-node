@@ -1,7 +1,7 @@
 header 
     a(href="/").header__logo
         i.fab.fa-youtube 
-        span YouTube™
+        span WoongTube™
     nav 
         ul 
             li 
@@ -19,7 +19,7 @@ header
                         if loggedInUser.avatarUrl === ''
                             span 😃
                         else
-                            if loggedInUser.socialOnly
+                            if loggedInUser.avatarUrl.includes("github")
                                 img.header__avatar(src=loggedInUser.avatarUrl, crossorigin)
                             else 
                                 img.header__avatar(src="/" + loggedInUser.avatarUrl)
