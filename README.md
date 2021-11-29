@@ -53,19 +53,19 @@
 
 <br/>
 
-## ✅ Gallery
+## ✅Gallery
 👉  **[Here](https://woongtube.herokuapp.com/)**
 
 <br/>
 
-## ✅ Installation
+## ✅Installation
 ```shell
 npm install
 ```
 
 <br/>
 
-## ✅ Usage
+## ✅Usage
 ```shell
 npm run start
 ```
@@ -80,6 +80,6 @@ GH_SECRET= <Github OAuth APP Client Secrets>
 
 <br/>
 
-## ✅ Stack
+## ✅Stack
 
 
