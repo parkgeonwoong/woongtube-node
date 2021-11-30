@@ -9,6 +9,13 @@
     width: 100%;
     border-radius: 7px;
     background-color: ivory;
+    img {
+      height: 140px;
+      width: 100%;
+      border-radius: 7px;
+      background-size: cover;
+      background-position: center;
+    }
   }
   .video-mixin__data {
     padding: 0px 15px;
