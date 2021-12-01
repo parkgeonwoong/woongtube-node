@@ -2,6 +2,8 @@
 
 - WoongTube
 - FullStack = Server + Client + Deployment
+- Using both classic SSR and CSR.
+- Development progress : dev:server ➡️ dev:front ➡️ build ➡️ deployment
 
 <br/>
 
@@ -29,6 +31,8 @@
 <img src="http://img.shields.io/badge/Babel-F9DC3E?style&logo=Babel&logoColor=white"/></a> &nbsp
 <img src="http://img.shields.io/badge/Webpack-8DD6F9?style&logo=Webpack&logoColor=white"/></a> &nbsp
 <img src="http://img.shields.io/badge/FFmpeg-007808?style&logo=FFmpeg&logoColor=white"/></a> &nbsp
+<img src="http://img.shields.io/badge/Bcrypt-512BD4?style&logo&logoColor=white"/></a> &nbsp
+<img src="http://img.shields.io/badge/mongoose-981E32?style&logo&logoColor=white"/></a> &nbsp
 </p>
 <p>
 <strong>• Style</strong>&nbsp&nbsp&nbsp
@@ -81,10 +85,46 @@ npm run start
 ```
 COOKIE_SECRET = <ANYWHERE>
 DB_URL = <MONGODB>
-GH_CLIENT = <Github OAuth APP ClientID>
-GH_SECRET= <Github OAuth APP Client Secrets>
+GH_CLIENT = <Github OAuth APP CLIENTID>
+GH_SECRET= <Github OAuth APP CLIENTID SECRETS>
+AWS_ID = <AWS IAM ACCESSKEY>
+AWS_SECRET = <AWS IAM SECRETKEY>
 ```
+
+❗수정시 package.json에서 `devDependencies` 참조하여 추가 npm 설치필요
 
 <br/>
 
 ## ✅Stack
+
+```markdown
+[Controller]
+"NodeJS"
+"ES6"
+"Express"
+"Babel"
+"Passport"
+"Bcrypt"
+"SocialLogin"
+"ESLint"
+"Multer"
+"regenerator-runtime"
+
+[Model]
+"MongoDB"
+"Mongoose"
+"RelationShips"
+
+[View]
+"AJAX"
+"Pug"
+"SCSS"
+"Webpack"
+"FFmpeg"
+"Webassembly"
+
+[Deployment]
+"Mongo Atlas"
+"Heroku git"
+"AWS S3"
+```
