@@ -1,4 +1,5 @@
 # 📌 Youtube Coding
+
 - WoongTube
 - FullStack = Server + Client + Deployment
 
@@ -19,6 +20,7 @@
 <p> 
 <strong>• DataBase</strong>&nbsp&nbsp&nbsp
 <img src="http://img.shields.io/badge/MongoDB-47A248?style&logo=MongoDB&logoColor=white"/></a> &nbsp
+<img src="http://img.shields.io/badge/Amazon AWS-232F3E?style&logo=Amazon AWS&logoColor=white"/></a> &nbsp
 </p>
 <p>
 <strong>• API & Tech Stack</strong>&nbsp&nbsp&nbsp
@@ -45,20 +47,23 @@
 <br />
 
 ## ➡️ Table of Contents
-- [Summary Skill icons](#summary-skill-icons)  
-- [Gallery](#gallery)  
-- [Installation](#installation)  
-- [Usage](#usage)  
-- [Stack](#stack)  
+
+- [Summary Skill icons](#summary-skill-icons)
+- [Gallery](#gallery)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Stack](#stack)
 
 <br/>
 
 ## ✅Gallery
-👉  **[Here](https://woongtube.herokuapp.com/)**
+
+👉 **[Here](https://woongtube.herokuapp.com/)**
 
 <br/>
 
 ## ✅Installation
+
 ```shell
 npm install
 ```
@@ -66,11 +71,13 @@ npm install
 <br/>
 
 ## ✅Usage
+
 ```shell
 npm run start
 ```
 
 - file create `.env` package.json root
+
 ```
 COOKIE_SECRET = <ANYWHERE>
 DB_URL = <MONGODB>
@@ -81,5 +88,3 @@ GH_SECRET= <Github OAuth APP Client Secrets>
 <br/>
 
 ## ✅Stack
-
-
