@@ -57,6 +57,8 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Stack](#stack)
+- [Contributor](#contributor)
+
 
 <br/>
 
@@ -128,3 +130,8 @@ AWS_SECRET = <AWS IAM SECRETKEY>
 "Heroku git"
 "AWS S3"
 ```
+
+<br>
+
+## ✅Contributor
+<a href="https://github.com/parkgeonwoong"><img src = "https://avatars.githubusercontent.com/u/65653053?s=96&v=4" width="80" style="max-width: 100%;"></a>
