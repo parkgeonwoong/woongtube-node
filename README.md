@@ -1,9 +1,9 @@
 # 📌 Youtube Coding
 
-- WoongTube
-- FullStack = Server + Client + Deployment
-- Using both classic SSR and CSR.
-- Development progress : dev:server ➡️ dev:front ➡️ build ➡️ deployment
+- **WoongTube**
+- **FullStack** = Server + Client + Deployment
+- **Using** both classic SSR and CSR.
+- **Development progress** : dev:server ➡️ dev:front ➡️ build ➡️ deployment
 
 <br/>
 
@@ -59,7 +59,7 @@
   - [✅ Installation](#-installation)
   - [✅ Usage](#-usage)
   - [✅ Project function](#-project-function)
-  - [✅ 프로젝트 결과](#-프로젝트-결과)
+  - [✅ Project results](#-project-results)
   - [✅ Document](#-document)
   - [✅ Notion](#-notion)
   - [✅ Stack](#-stack)
@@ -71,15 +71,11 @@
 
 👉 **[Here](https://woongtube.herokuapp.com/)**
 
-<br/>
-
 ## ✅ Installation
 
 ```shell
 npm install
 ```
-
-<br/>
 
 ## ✅ Usage
 
@@ -121,6 +117,7 @@ AWS_SECRET = <AWS IAM SECRETKEY>
 <br>
 
 - **메뉴**
+
   - 찾기 기능으로 동영상을 편하게 찾기 가능
   - 동영상 업로드 편집 기능으로 수정
   - 프로필을 직접 확인함으로 사용자가 올린 동영상 확인
@@ -128,6 +125,7 @@ AWS_SECRET = <AWS IAM SECRETKEY>
 <br>
 
 - **동영상**
+
   - 비디오 플레이어를 제작하여 특색있고 심플한 디자인
   - 제목, 조회수, 동영상 업로드 날짜 및 설명 표현
   - 사용자가 올린 동영상의 프로필 확인 기능
@@ -136,7 +134,7 @@ AWS_SECRET = <AWS IAM SECRETKEY>
 
 <br>
 
-## ✅ 프로젝트 결과
+## ✅ Project results
 
 | Example                            |              Example               |
 | ---------------------------------- | :--------------------------------: |
