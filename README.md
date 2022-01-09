@@ -1,4 +1,4 @@
-# 📌 Youtube Coding
+# 📌 tube Coding
 
 - **WoongTube**
 - **FullStack** = Server + Client + Deployment
